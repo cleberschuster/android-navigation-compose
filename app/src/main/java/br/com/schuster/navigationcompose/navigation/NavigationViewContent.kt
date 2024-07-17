@@ -92,7 +92,6 @@ fun LoginContent(
 //    }
 //}
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeViewContent(navController: NavHostController = rememberNavController()) {
