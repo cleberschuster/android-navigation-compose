@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.com.schuster.navigationcompose.components.BottomBar
+import br.com.schuster.navigationcompose.ui.theme.NavigationComposeTheme
 
 
 // 2) DEFINIR CONTEUDOS DAS TELAS
@@ -36,21 +36,21 @@ fun ViewContent(name: String, onClick: () -> Unit) {
     }
 }
 
-//@Preview
-//@Composable
-//fun ViewContentPreview() {
-//    ArsenalTheme (useDarkTheme = false) {
-//        ViewContent("Conteúdo que exibirei!") {}
-//    }
-//}
+@Preview
+@Composable
+fun ViewContentPreview() {
+    NavigationComposeTheme (darkTheme = false) {
+        ViewContent("Conteúdo que exibirei!") {}
+    }
+}
 
-//@Preview
-//@Composable
-//fun HomeViewContentPreview() {
-//    ArsenalTheme (useDarkTheme = false) {
-//        HomeViewContent(rememberNavController())
-//    }
-//}
+@Preview
+@Composable
+fun HomeViewContentPreview() {
+    NavigationComposeTheme (darkTheme = false) {
+        HomeViewContent(rememberNavController())
+    }
+}
 
 @Composable
 fun LoginContent(
@@ -84,13 +84,13 @@ fun LoginContent(
     }
 }
 
-//@Preview
-//@Composable
-//fun LoginContentPreview() {
-//    ArsenalTheme (useDarkTheme = false) {
-//        LoginContent({},{},{})
-//    }
-//}
+@Preview
+@Composable
+fun LoginContentPreview() {
+    NavigationComposeTheme (darkTheme = false) {
+        LoginContent({},{},{})
+    }
+}
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
