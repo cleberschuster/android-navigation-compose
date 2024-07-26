@@ -1,6 +1,8 @@
 package br.com.schuster.navigationcompose.components
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -12,6 +14,8 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
@@ -90,14 +94,24 @@ fun RowScope.AddItem(
     currentDestination: NavDestination?,
     navController: NavHostController
 ) {
+
+    // esses 3 parametros sao necessarios para mudar a cor quando o componente esta pressionado
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    val colorPressed = if (isPressed) Color.Green else Color.Unspecified
+
     NavigationBarItem(
         label = {
             Text(text = stringResource(itemConfig.title))
         },
+        // Precisa deste interactionSource para funcionar, e chama a variavel colorPressed no tint do icon
+        // a mudança de cor quando o componente esta pressionado
+        interactionSource = interactionSource,
         icon = {
             Icon(
                 imageVector = itemConfig.icon,
-                contentDescription = "Navigation Icon"
+                contentDescription = "Navigation Icon",
+                tint = colorPressed
             )
         },
         selected = currentDestination?.hierarchy?.any { it.route == itemConfig.route } == true,
