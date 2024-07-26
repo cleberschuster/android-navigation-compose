@@ -84,22 +84,25 @@ fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
         startDestination = AppGraph.details.HELP
     ) {
         composable(route = AppGraph.details.HELP) {
-            ViewContent(name = "HELP") {
-                navController.navigate(AppGraph.details.DISCLAIMER)
-            }
+            ViewContent(
+                name = "HELP",
+                onClick =  { navController.navigate(AppGraph.details.DISCLAIMER) }
+            )
         }
         composable(route = AppGraph.details.DISCLAIMER) {
-            ViewContent(name = "DISCLAIMER") {
-                navController.navigate(AppGraph.details.FAQ)
-            }
+            ViewContent(
+                name = "DISCLAIMER",
+                onClick = { navController.navigate(AppGraph.details.FAQ) }
+            )
         }
         composable(route = AppGraph.details.FAQ) {
-            ViewContent(name = "FAQ") {
-                navController.popBackStack(
+            ViewContent(
+                name = "FAQ",
+                onClick = { navController.popBackStack(
                     route = AppGraph.details.FAQ,
                     inclusive = false
                 )
-            }
+            })
         }
     }
 }
