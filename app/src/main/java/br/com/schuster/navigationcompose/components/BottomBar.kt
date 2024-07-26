@@ -102,7 +102,9 @@ fun RowScope.AddItem(
 
     NavigationBarItem(
         label = {
-            Text(text = stringResource(itemConfig.title))
+            Text(
+                text = stringResource(itemConfig.title),
+                color = colorPressed)
         },
         // Precisa deste interactionSource para funcionar, e chama a variavel colorPressed no tint do icon
         // a mudança de cor quando o componente esta pressionado
